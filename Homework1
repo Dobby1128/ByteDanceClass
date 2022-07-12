@@ -1,0 +1,18 @@
+>按顺序打印出 App、ViewController 生命周期的各个事件
+>>App生命周期
+>>>点击程序图标->执行main函数->通过UIApplicationMain函数->初始化UIApplication对象并且为他设置代理对象->UIApplication对象->程序结束退出
+>>ViewController生命周期
+>>>初始化
+   ->调用Loadeview方法为viewcontroller创建view
+   ->调用viewDidLoad方法（当VC的view对象载入内存后调用，用于对view进行额外的初始化操作。）
+   ->调用viewWillAppear方法（在view即将添加到视图层级中（显示给用户）且任意显示动画切换之前调用；UIViewController对象的视图即将加入窗口时调用；）
+   ->调用viewDidAppear方法（UIViewController对象的视图已经加入到窗口时调用；）
+   ->调用viewWillDisappear方法（UIViewController对象的视图即将消失、被覆盖或是隐藏时调用；）
+   ->调用viewDidDisappear方法（UIViewController对象的视图已经消失、被覆盖或是隐藏时调用；）
+   ->程序结束
+>写出五种常用的UI控件
+>>UIScrollView, UITableView, UICollectionView, UIWebView & WKWebView
+>列举出三个 UITableViewDelegate 声明的方法
+>>- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+  - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;
+  - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section;
