@@ -1,0 +1,13 @@
+@implementation Student{
+  char name;
+  char major;
+  int age;
+}
+
+-(int) study: (int) time {
+  @autoreleasepool {
+    NSLog(time);
+  }
+  return 0;
+}
+@end
