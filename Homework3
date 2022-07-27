@@ -1,0 +1,57 @@
+//
+//  Passenger.h
+//  College Demo
+//
+//  Created by mashujun on 2022/7/18.
+//
+
+#import "Person.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface Orders : NSObject
+	char origin;
+	char destination;
+	int price;
+	int ifchecked=0;
+@end
+@implementation Orders
+	Orders(char ori, char des, int pri) {
+		origin = ori;
+		destination = des;
+		price = pri;
+	}
+@end
+
+@interface Passenger : Person
+// @property 属性
+	int ifadult;// 是否年满 18 岁(0/1)
+	Orders history_Orders[100];// 历史订单 （数组）
+	int history_pointer=0;//记录已有订单
+	Orders unfinished_Orders[100];// 未出行订单 （数组）
+	int unfinished_pointer=0;//记录未出行订单
+@end
+
+@implementation Passenger
+// Function 方法
+- (void)reserveOrders (char ori,char des,int pri) {
+	if (ifadult) {
+		if (unfinished_pointer == 100) {
+			unfinished_pointer = 0;
+		}
+		unfinished_Orders[unfinished_pointer] = new Orders(ori, des, pri);
+	}
+	else {
+		NSLog(@"Error! Fail to reserve an order! \n")
+	}
+}// 去订票
+
+- (void)checkOrders(int num) {
+	unfinished_Orders[num].ifchecked = 1;
+	history_Orders[history_pointer] = unfinished_Orders[num];
+	history_pointer++;
+	free unfinished_Orders[num];
+	}// 去检票
+@end
+
+NS_ASSUME_NONNULL_END
